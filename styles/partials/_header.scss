@@ -1,0 +1,128 @@
+@use "./typography" as *;
+@use "./breakpoints" as device;
+@use "./variables" as v;
+
+header {
+    background-color: v.$bandsite-black;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    font-size: 0.87rem;
+
+    @include device.tablet {
+        flex-direction: row;
+        justify-content: flex-start;
+    }
+
+    div {
+        margin: 16px 16px 4px 36px;
+        img {
+            width: 112px;
+        }
+
+        @include device.tablet {
+            margin: 24px 16px 16px 36px;
+            img {
+                width: 112px;
+            }
+        }
+
+        @include device.desktop {
+            margin: 32px 16px 16px 128px;
+            img {
+                width: 112px;
+            }
+        }
+    }
+
+    > nav {
+        margin: 0 16px;
+    }
+
+    ul {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+        padding-left: 0;
+        margin-top: 0;
+        
+        @include device.tablet {
+            margin: 24px 16px;
+        }
+
+        @include device.desktop {
+            margin: 32px 16px;
+        }
+    }
+
+    li {
+        list-style: none;
+        
+        @include device.tablet {
+            margin: 0 16px;
+        }
+    }
+}
+
+.hover-home, .hover-shows {
+    text-decoration: none;
+    color: v.$mercury;
+    font-family: "Avenir Next Regular";
+    position: relative;
+}
+
+.hover-home:focus, .hover-shows:hover {
+    color: v.$white;
+    font-weight: 700;
+}
+
+.hover-home::after {
+    content: "";
+    height: 3px;
+    width: 100%;
+    background-color: v.$white;
+    position: absolute;
+    left: 0;
+    bottom: -0.9rem;
+    transition: all 0.5s;
+    pointer-events: none;
+    opacity: 1;
+
+    @include device.tablet {
+        bottom: -1.5rem;
+    }
+
+    @include device.desktop {
+        bottom: -2rem;
+    }
+}
+
+.hover-shows::after {
+    content: "";
+    height: 3px;
+    width: 100%;
+    background-color: v.$white;
+    position: absolute;
+    left: 0;
+    bottom: -0.9rem;
+    transition: all 0.5s;
+    pointer-events: none;
+    opacity: 0;
+
+    @include device.tablet {
+        bottom: -1.5rem;
+    }
+
+    @include device.desktop {
+        bottom: -2rem;
+    }
+}
+
+.hover-home:focus::after, .hover-home:hover::after {
+    opacity: 1;
+}
+
+.hover-shows:focus::after, .hover-shows:hover::after {
+    opacity: 1;
+}

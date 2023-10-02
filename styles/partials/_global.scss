@@ -1,0 +1,16 @@
+@use "./typography" as *;
+
+html {
+    box-sizing: border-box;
+    font-family: "Avenir Next Bold";
+}
+
+*,
+*:before,
+*:after {
+    box-sizing: inherit;
+}
+
+body {
+    margin: 0;
+}

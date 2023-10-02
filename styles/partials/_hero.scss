@@ -1,0 +1,46 @@
+@use "./typography" as *;
+@use "./breakpoints" as device;
+@use "./variables" as v;
+
+// adding a 0.5 opacity overlay to background image
+.hero {
+    background-image: linear-gradient(0deg, rgba(50, 50, 50, 0.5), rgba(50, 50, 50, 0.5)) ,url("../assets/images/hero-bio.jpg");
+    width: 100vw;
+    height: 58vw;
+    background-position: 50% 52%;
+    background-size: cover;
+    min-height: 9.375rem;
+    display: flex;
+    align-items: center;
+    padding-left: 1rem;
+
+    @include device.tablet {
+        background-position: 50% 90%;
+    }
+
+    @include device.desktop {
+        background-position: 50% 20%;
+        height: 50vw;
+    }
+
+    > h1 {
+        font-family: "Avenir Next Demi";
+        font-weight: 700;
+        color: v.$white;
+        margin: 0;
+        font-size: 1.5rem;
+
+        @include device.tablet {
+            padding-left: 20px;
+            font-family: "Avenir Next Regular";
+            font-size: 3.75rem;
+            font-weight: 700;
+        }
+
+        @include device.desktop {
+            padding-left: 7.5rem;
+        }
+    }
+
+}
+
