@@ -23,18 +23,18 @@
         height: 50vw;
     }
 
-    > h1 {
-        font-family: "Avenir Next Demi";
-        font-weight: 700;
+    &__band-name {
+        font-family: "Avenir", sans-serif;
+        font-weight: 600;
         color: v.$white;
         margin: 0;
         font-size: 1.5rem;
 
         @include device.tablet {
-            padding-left: 20px;
-            font-family: "Avenir Next Regular";
+            padding-left: 1.25rem;
+            font-family: "Avenir", sans-serif;
             font-size: 3.75rem;
-            font-weight: 700;
+            font-weight: 600;
         }
 
         @include device.desktop {

@@ -2,7 +2,7 @@
 @use "./breakpoints" as device;
 @use "./variables" as v;
 
-header {
+.header {
     background-color: v.$bandsite-black;
     display: flex;
     flex-direction: column;
@@ -15,32 +15,32 @@ header {
         justify-content: flex-start;
     }
 
-    div {
-        margin: 16px 16px 4px 36px;
+    &__logo {
+        margin: 1rem 1rem 0.25rem 2.25rem;
         img {
-            width: 112px;
+            width: 7rem;
         }
 
         @include device.tablet {
-            margin: 24px 16px 16px 36px;
+            margin: 1.5rem 1rem 1rem 2.25rem;
             img {
-                width: 112px;
+                width: 7rem;
             }
         }
 
         @include device.desktop {
-            margin: 32px 16px 16px 128px;
+            margin: 2rem 1rem 1rem 8rem;
             img {
-                width: 112px;
+                width: 7rem;
             }
         }
     }
 
-    > nav {
-        margin: 0 16px;
+    &__nav {
+        margin: 0 1rem;
     }
 
-    ul {
+    &__ul {
         display: flex;
         flex-direction: row;
         justify-content: space-around;
@@ -48,81 +48,86 @@ header {
         margin-top: 0;
         
         @include device.tablet {
-            margin: 24px 16px;
+            margin: 1.5rem 1rem;
         }
 
         @include device.desktop {
-            margin: 32px 16px;
+            margin: 2rem 1rem;
         }
     }
 
-    li {
+    &__li {
         list-style: none;
         
         @include device.tablet {
-            margin: 0 16px;
+            margin: 0 1rem;
         }
     }
-}
 
-.hover-home, .hover-shows {
-    text-decoration: none;
-    color: v.$mercury;
-    font-family: "Avenir Next Regular";
-    position: relative;
-}
-
-.hover-home:focus, .hover-shows:hover {
-    color: v.$white;
-    font-weight: 700;
-}
-
-.hover-home::after {
-    content: "";
-    height: 3px;
-    width: 100%;
-    background-color: v.$white;
-    position: absolute;
-    left: 0;
-    bottom: -0.9rem;
-    transition: all 0.5s;
-    pointer-events: none;
-    opacity: 1;
-
-    @include device.tablet {
-        bottom: -1.5rem;
+    &__hover-home, &__hover-shows {
+        text-decoration: none;
+        color: v.$mercury;
+        font-family: "Avenir", sans-serif;
+        font-weight: 600;
+        position: relative;
+    }
+    
+    &__hover-shows {
+        font-weight: 400;
     }
 
-    @include device.desktop {
-        bottom: -2rem;
+    &__hover-home:focus, &__hover-shows:hover {
+        color: v.$white;
+        font-weight: 600;
     }
-}
-
-.hover-shows::after {
-    content: "";
-    height: 3px;
-    width: 100%;
-    background-color: v.$white;
-    position: absolute;
-    left: 0;
-    bottom: -0.9rem;
-    transition: all 0.5s;
-    pointer-events: none;
-    opacity: 0;
-
-    @include device.tablet {
-        bottom: -1.5rem;
+    
+    &__hover-home::after {
+        content: "";
+        height: 0.18rem;
+        width: 100%;
+        background-color: v.$white;
+        position: absolute;
+        left: 0;
+        bottom: -0.9rem;
+        transition: all 0.5s;
+        pointer-events: none;
+        opacity: 1;
+    
+        @include device.tablet {
+            bottom: -1.5rem;
+        }
+    
+        @include device.desktop {
+            bottom: -2rem;
+        }
     }
+    
+    &__hover-shows::after {
+        content: "";
+        height: 0.18rem;
+        width: 100%;
+        background-color: v.$white;
+        position: absolute;
+        left: 0;
+        bottom: -0.9rem;
+        transition: all 0.5s;
+        pointer-events: none;
+        opacity:0;
 
-    @include device.desktop {
-        bottom: -2rem;
+        @include device.tablet {
+            bottom: -1.5rem;
+        }
+    
+        @include device.desktop {
+            bottom: -2rem;
+        }
     }
-}
-
-.hover-home:focus::after, .hover-home:hover::after {
-    opacity: 1;
-}
-
-.hover-shows:focus::after, .hover-shows:hover::after {
-    opacity: 1;
+    
+    &__hover-home:hover::after, &__hover-home:focus::after {
+        opacity: 1;
+    }
+    
+    &__hover-shows:hover::after, &__hover-shows:focus::after {
+        opacity: 1;
+    }
 }

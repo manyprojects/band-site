@@ -1,10 +1,5 @@
 @use "./variables" as v;
-
-@mixin mobile {
-    @media screen and (min-width: v.$mobile){
-        @content;
-    }
-}
+//mobile first layout (mobile: 320px default)
 
 @mixin tablet {
     @media screen and (min-width: v.$tablet){
