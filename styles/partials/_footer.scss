@@ -23,12 +23,13 @@ footer {
 }
 
 .logo {
-    padding-top: 3rem;
+    padding-top: 2.5rem;
     min-height: 1rem;;
 
     @include device.tablet {
         order: -1;
         align-self: flex-end;
+        padding-top: 3.9rem;
     }
 }
 
@@ -76,7 +77,7 @@ footer {
         justify-content: space-between;
         padding-top: 0;
         padding-bottom: 1.75rem;
-        margin-top: -3.1rem;
+        margin-top: -4.2rem;
     }
 
     @include device.desktop {
@@ -101,14 +102,15 @@ footer {
         margin: 0;
         padding: 0.75rem 0;
 
-        &__email {
-            padding-top: 0;
-            margin: 0;
-        }
-
         @include device.tablet {
             padding: 1.5rem 0;
         }
+    }
+
+    &__email {
+        padding-top: 0.2rem;
+        padding-bottom: 1.4rem;
+        margin: 0;
     }
 
     &__email-address{
@@ -128,16 +130,20 @@ footer {
 }
 
 .copyright {
+
     @include device.tablet {
-        padding-top: 2.5rem;
+        padding-top: 1rem;
         padding-bottom: 1.5rem;
     }
 }
 
 .copyright__text {
     font-size: 0.7rem;
-    padding: 0.75rem 0;
+    padding: 0.75rem 0 1rem;
+    
+
     margin: 0;
+
     @include device.tablet {
         font-size: 0.875rem;
     }

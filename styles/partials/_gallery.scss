@@ -49,12 +49,6 @@
     &__image {
         padding: 0.5rem 0;
 
-        filter: grayscale(1);
-        transition: 0.5s;
-        &:hover {
-            filter: none;
-        }
-
         @include device.tablet {
             width: 31%;
             padding-bottom: 1rem;
@@ -62,6 +56,12 @@
 
         @include device.desktop {
             width: 31.7%;
+
+            filter: grayscale(1);
+            transition: 0.5s;
+            &:hover {
+                filter: none;
+            }
         }
     }
 }
