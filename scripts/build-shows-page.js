@@ -137,11 +137,14 @@ function displayShow(shoObj) {
     shows.append(showsRows);
 }
 
-
 // when row is selected
-const selectedRow = document.querySelector(".shows__flex");
+const selectedRow = document.querySelectorAll(".shows__flex");
+console.log(selectedRow);
 
-selectedRow.addEventListener("click", event => {
-    console.log(event);
-    alert();
+selectedRow.forEach((e)=>{
+    e.addEventListener("click", event=>{
+        // if already selected, remove selected
+        document.querySelector(".shows__listener")?.classList.remove("shows__listener");
+        event.target.classList.add("shows__listener");
+    });
 });

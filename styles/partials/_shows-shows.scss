@@ -176,9 +176,8 @@
             width: 75%;
         }
     }
-
-    // event listener when row is selected -> color: mercury
-    &__listener {
+    // select rows
+    &__listener{
         background-color: v.$mercury;
     }
 }
