@@ -1,0 +1,184 @@
+@use "./typography" as *;
+@use "./breakpoints" as device;
+@use "./variables" as v;
+
+.shows {
+    font-family: "Avenir", sans-serif;
+    padding-top: 1.5rem;
+
+    &__rows {
+        display: flex;
+        flex-direction: column;
+        margin: 0.5rem 0rem;
+
+        @include device.tablet {
+            padding: 1.5rem 1rem 1.25rem;
+        }
+
+        @include device.desktop {
+            flex-direction: row;
+            justify-content: space-between;
+            padding: 1.25rem 7rem 1.25rem;
+        }
+    }
+
+    &__heading {
+        font-size: 1.5rem;
+        font-weight: 600;
+        margin: 0 1rem 0.75rem;
+
+        @include device.tablet {
+            font-size: 2.25rem;
+            margin-bottom: 1.5rem
+        }
+    }
+
+    &__mobile-headings {
+        font-weight: 600;
+        font-size: 0.65rem;
+        color: v.$silver;
+        margin: 1rem 1rem 0.25rem 1rem;
+
+        @include device.tablet {
+            display: none;
+        }
+    }
+
+    &__date {
+        font-size: 0.8rem;
+        font-weight: 600;
+        color: v.$bandsite-black;
+        margin-top: 0.45rem;
+        margin-left: 1rem;
+        margin-right: 1rem;
+
+        @include device.tablet {
+            font-size: 0.85rem;
+            padding-top: 1rem;
+        }
+    }
+
+    &__venue {
+        font-size: 0.8rem;
+        font-weight: 400;
+        color: v.$bandsite-black;
+        margin-top: 0.45rem;
+        margin-left: 1rem;
+        margin-right: 1rem;
+
+        @include device.tablet {
+            font-size: 0.85rem;
+            padding-top: 1rem;
+        }
+    }
+
+    &__location {
+        font-size: 0.8rem;
+        font-weight: 400;
+        color: v.$bandsite-black;
+        margin-top: 0.45rem;
+        margin-left: 1rem;
+        margin-right: 1rem;
+
+        @include device.tablet {
+            font-size: 0.85rem;
+            padding-top: 1rem;
+        }
+    }
+
+    &__button {
+        height: 2.5rem;
+        width: 18rem;
+        font-size: 0.95rem;
+        color: v.$white;
+        background-color: v.$bandsite-black;
+        border-radius: 4px;
+        border: none;
+        margin: 0.5rem 1rem 0.85rem;
+
+        @include device.tablet {
+            width: 9.5rem;
+        }
+    }
+
+    hr {
+        height: 1px;
+        border-top: 1px solid v.$mercury;
+        margin: 0;
+    }
+
+    &__flex {
+        @include device.tablet {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+        }
+    }
+
+    &__flex:hover {
+        background-color: v.$alabaster;
+    }
+
+    &__tablet-date {
+        font-weight: 600;
+        font-size: 0.7rem;
+        color: v.$silver;
+        margin: 1rem 1rem 0.25rem 1rem;
+
+        @include device.mobile {
+            display: none;
+        }
+
+    }
+
+    &__tablet-venue {
+        font-weight: 600;
+        font-size: 0.7rem;
+        color: v.$silver;
+        margin: 1rem 1rem 0.25rem 1rem;
+        padding-left: 3rem;
+
+        @include device.mobile {
+            display: none;
+        }
+    }
+
+    &__tablet-location {
+        font-weight: 600;
+        font-size: 0.7rem;
+        color: v.$silver;
+        margin: 1rem 1rem 0.25rem 1rem;
+        padding-right: 1.7rem;
+
+        @include device.mobile {
+            display: none;
+        }
+
+    }
+
+    &__tablet-flex {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        width: 65%;
+
+        @include device.mobile {
+            display: none;
+        }
+
+        @include device.desktop {
+            padding-bottom: 1.5rem;
+        }
+    }
+
+    &__show {
+        @include device.desktop {
+            width: 75%;
+        }
+    }
+
+    // event listener when row is selected -> color: mercury
+    &__listener {
+        background-color: v.$mercury;
+    }
+}
