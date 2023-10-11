@@ -139,12 +139,25 @@ function displayShow(shoObj) {
 
 // when row is selected
 const selectedRow = document.querySelectorAll(".shows__flex");
-console.log(selectedRow);
 
-selectedRow.forEach((e)=>{
-    e.addEventListener("click", event=>{
+selectedRow.forEach( e => {
+    e.addEventListener("mousedown", event => {
         // if already selected, remove selected
-        document.querySelector(".shows__listener")?.classList.remove("shows__listener");
-        event.target.classList.add("shows__listener");
+        if (document.querySelector("#clicked") != null) {
+            document.querySelector("#clicked").id = "";
+            if(event.target.className !== "shows__flex") {
+                event.target.parentElement.id = "clicked";
+            }
+            else {
+                event.target.id = "clicked";
+            }
+        } else {
+            if(event.target.className !== "shows__flex") {
+                event.target.parentElement.id = "clicked";
+            }
+            else {
+                event.target.id = "clicked";
+            }
+        }
     });
 });

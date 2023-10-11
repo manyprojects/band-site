@@ -12,7 +12,7 @@
         margin: 0.5rem 0rem;
 
         @include device.tablet {
-            padding: 1.5rem 1rem 1.25rem;
+            padding: 1.5rem 1.5rem 1.25rem;
         }
 
         @include device.desktop {
@@ -55,6 +55,7 @@
         @include device.tablet {
             font-size: 0.85rem;
             padding-top: 1rem;
+            width: 25%;
         }
     }
 
@@ -69,6 +70,7 @@
         @include device.tablet {
             font-size: 0.85rem;
             padding-top: 1rem;
+            width: 25%;
         }
     }
 
@@ -83,6 +85,7 @@
         @include device.tablet {
             font-size: 0.85rem;
             padding-top: 1rem;
+            width: 25%;
         }
     }
 
@@ -124,6 +127,7 @@
         font-size: 0.7rem;
         color: v.$silver;
         margin: 1rem 1rem 0.25rem 1rem;
+        width: 33.33%;
 
         @include device.mobile {
             display: none;
@@ -136,7 +140,7 @@
         font-size: 0.7rem;
         color: v.$silver;
         margin: 1rem 1rem 0.25rem 1rem;
-        padding-left: 3rem;
+        width: 33.33%;
 
         @include device.mobile {
             display: none;
@@ -148,7 +152,7 @@
         font-size: 0.7rem;
         color: v.$silver;
         margin: 1rem 1rem 0.25rem 1rem;
-        padding-right: 1.7rem;
+        width: 33.33%;
 
         @include device.mobile {
             display: none;
@@ -160,24 +164,25 @@
         display: flex;
         flex-direction: row;
         justify-content: space-between;
-        width: 65%;
+        width: calc(100vw - 13rem);
 
         @include device.mobile {
             display: none;
         }
 
         @include device.desktop {
+            width: calc(100vw - 33.7rem);
             padding-bottom: 1.5rem;
         }
     }
 
     &__show {
         @include device.desktop {
-            width: 75%;
+            width: 100%;
         }
     }
-    // select rows
-    &__listener{
-        background-color: v.$mercury;
-    }
+}
+// after clicked
+#clicked {
+    background-color: v.$mercury;
 }

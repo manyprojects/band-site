@@ -290,7 +290,7 @@ body {
 }
 @media screen and (min-width: 768px) {
   .shows__rows {
-    padding: 1.5rem 1rem 1.25rem;
+    padding: 1.5rem 1.5rem 1.25rem;
   }
 }
 @media screen and (min-width: 1280px) {
@@ -334,6 +334,7 @@ body {
   .shows__date {
     font-size: 0.85rem;
     padding-top: 1rem;
+    width: 25%;
   }
 }
 .shows__venue {
@@ -348,6 +349,7 @@ body {
   .shows__venue {
     font-size: 0.85rem;
     padding-top: 1rem;
+    width: 25%;
   }
 }
 .shows__location {
@@ -362,6 +364,7 @@ body {
   .shows__location {
     font-size: 0.85rem;
     padding-top: 1rem;
+    width: 25%;
   }
 }
 .shows__button {
@@ -399,6 +402,7 @@ body {
   font-size: 0.7rem;
   color: #AFAFAF;
   margin: 1rem 1rem 0.25rem 1rem;
+  width: 33.33%;
 }
 @media screen and (max-width: 767px) {
   .shows__tablet-date {
@@ -410,7 +414,7 @@ body {
   font-size: 0.7rem;
   color: #AFAFAF;
   margin: 1rem 1rem 0.25rem 1rem;
-  padding-left: 3rem;
+  width: 33.33%;
 }
 @media screen and (max-width: 767px) {
   .shows__tablet-venue {
@@ -422,7 +426,7 @@ body {
   font-size: 0.7rem;
   color: #AFAFAF;
   margin: 1rem 1rem 0.25rem 1rem;
-  padding-right: 1.7rem;
+  width: 33.33%;
 }
 @media screen and (max-width: 767px) {
   .shows__tablet-location {
@@ -433,7 +437,7 @@ body {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  width: 65%;
+  width: calc(100vw - 13rem);
 }
 @media screen and (max-width: 767px) {
   .shows__tablet-flex {
@@ -442,15 +446,17 @@ body {
 }
 @media screen and (min-width: 1280px) {
   .shows__tablet-flex {
+    width: calc(100vw - 33.7rem);
     padding-bottom: 1.5rem;
   }
 }
 @media screen and (min-width: 1280px) {
   .shows__show {
-    width: 75%;
+    width: 100%;
   }
 }
-.shows__listener {
+
+#clicked {
   background-color: #E1E1E1;
 }
 
