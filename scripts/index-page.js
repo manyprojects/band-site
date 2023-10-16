@@ -1,24 +1,21 @@
-const comments = [
-    {
-        name: "Connor Walton",
-        date: "02/17/2021",
-        text: "This is art. This is inexplicable magic expressed in the purest way, everything that makes up this majestic work deserves reverence. Let us appreciate this for what it is and what it contains."
-    },
-    {
-        name: "Emilie Beach",
-        date: "01/09/2021",
-        text: "I feel blessed to have seen them in person. What a show! They were just perfection. If there was one day of my life I could relive, this would be it. What an incredible day."
-    },
-    {
-        name: "Miles Acosta",
-        date: "12/20/2020",
-        text: "I can't stop listening. Every time I hear one of their songs - the vocals - it gives me goosebumps. Shivers straight down my spine. What a beautiful expression of creativity. Can't get enough."
-    }
-];
+import { bandsiteObj, newVar } from "./band-site-api.js";
+// console.log(bandsiteObj.getComments());
+console.log(newVar);
+let comments = bandsiteObj.getComments();
 
-comments.forEach((comment) => {
-    displayComment(comment);
-});
+function timestampToDate(timestamp) {
+    const commentDate = new Date(timestamp); 
+    let month = commentDate.getMonth() + 1;
+    let date = commentDate.getDate();
+    if (month < 10) {
+        month  = '0' + month;
+    }
+    if (date < 10) {
+        date = '0' + date;
+    }
+    return  `${month}/${date}/${commentDate.getFullYear()}`;
+}
+
 
 function displayComment(comment) {
     const commentSectionEl = document.createElement("div");
@@ -39,11 +36,11 @@ function displayComment(comment) {
 
     const commentTime = document.createElement("p");
     commentTime.classList.add("comments__time");
-    commentTime.textContent = comment.date;
+    commentTime.textContent = timestampToDate(comment.timestamp);
 
     const userInput = document.createElement("p");
     userInput.classList.add("comments__user-input");
-    userInput.textContent = comment.text;
+    userInput.textContent = comment.comment;
 
     const divider = document.createElement("hr");
 
@@ -65,39 +62,33 @@ function displayComment(comment) {
     document.querySelector(".comments__section").append(commentSectionEl, divider);
 }
 
-// form input secrtion
+// sort by timestamps
+comments.sort((a, b) => b.timestamp - a.timestamp);
+comments.forEach((comment) => {
+    displayComment(comment);
+});
+
+
+// form input section
 const commentForm = document.querySelector(".comments__form");
-
 commentForm.addEventListener("submit", event => {
-    
     event.preventDefault();
-
-    // creates a date object of current date and time
-    const commentDate = new Date(); 
-    let month = commentDate.getMonth() + 1;
-    let date = commentDate.getDate();
-
-    if (month < 10) {
-        month  = '0' + month;
-    }
-    if (date < 10) {
-        date = '0' + date;
-    }
-
-    const displayDate = `${month}/${date}/${commentDate.getFullYear()}`;
 
     const newUserObj = {
         name: event.target.userName.value,
-        date: displayDate,
-        text: event.target.userText.value
+        comment: event.target.userText.value
     }
-    comments.unshift(newUserObj);
+
+    async function postComment(newUserObj) {
+        const response1 = await bandsiteObj.postComment(newUserObj);       
+        comments = await bandsiteObj.getComments();
+        comments.sort((a, b) => b.timestamp - a.timestamp);
+        comments.forEach((comment) => {
+            displayComment(comment);
+        });
+    }
+    postComment(newUserObj);
 
     document.querySelector(".comments__section").innerHTML = "";
-    comments.forEach((comment) => {
-        displayComment(comment);
-    });
-
     commentForm.reset();
 });
-
