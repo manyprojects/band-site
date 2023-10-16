@@ -1,6 +1,5 @@
-import { bandsiteObj, newVar } from "./band-site-api.js";
-// console.log(bandsiteObj.getComments());
-console.log(newVar);
+import {bandsiteObj} from "./band-site-api.js";
+
 let comments = bandsiteObj.getComments();
 
 function timestampToDate(timestamp) {
@@ -62,8 +61,6 @@ function displayComment(comment) {
     document.querySelector(".comments__section").append(commentSectionEl, divider);
 }
 
-// sort by timestamps
-comments.sort((a, b) => b.timestamp - a.timestamp);
 comments.forEach((comment) => {
     displayComment(comment);
 });
@@ -71,24 +68,23 @@ comments.forEach((comment) => {
 
 // form input section
 const commentForm = document.querySelector(".comments__form");
-commentForm.addEventListener("submit", event => {
-    event.preventDefault();
+    commentForm.addEventListener("submit", event => {
+        event.preventDefault();
 
-    const newUserObj = {
-        name: event.target.userName.value,
-        comment: event.target.userText.value
-    }
+        const newUserObj = {
+            name: event.target.userName.value,
+            comment: event.target.userText.value
+        }
 
-    async function postComment(newUserObj) {
-        const response1 = await bandsiteObj.postComment(newUserObj);       
-        comments = await bandsiteObj.getComments();
-        comments.sort((a, b) => b.timestamp - a.timestamp);
-        comments.forEach((comment) => {
-            displayComment(comment);
-        });
-    }
-    postComment(newUserObj);
+        async function postComment(newUserObj) {
+            await bandsiteObj.postComment(newUserObj); 
+            comments = await bandsiteObj.getComments();
+            comments.forEach((comment) => {
+                displayComment(comment);
+            });
+        }
+        postComment(newUserObj);
 
-    document.querySelector(".comments__section").innerHTML = "";
-    commentForm.reset();
+        document.querySelector(".comments__section").innerHTML = "";
+        commentForm.reset();
 });

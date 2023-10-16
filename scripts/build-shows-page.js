@@ -1,35 +1,17 @@
-const showData = [
-    {
-        date : "Mon Sept 06 2021",
-        venue: "Ronald Lane",
-        location: "San Francisco, CA"
-    },
-    {
-        date: "Tue Sept 21 2021",
-        venue: "Pier 3 East",
-        location: "San Francisco, CA"
-    },
-    {
-        date: "Fri Oct 15 2021",
-        venue: "View Lounge",
-        location: "San Francisco, CA"
-    },
-    {
-        date: "Sat Nov 06 2021",
-        venue: "Hyatt Agency",
-        location: "San Francisco, CA"
-    },
-    {
-        date: "Fri Nov 26 2021",
-        venue: "Moscow Center",
-        location: "San Francisco, CA"
-    },
-    {
-        date: "Wed Dec 15 2021",
-        venue: "Press Club",
-        location: "San Francisco, CA"
+import {bandsiteObj} from "./band-site-api.js";
+
+function timestampToDate(timestamp) {
+    const commentDate = new Date(timestamp); 
+    let month = commentDate.getMonth() + 1;
+    let date = commentDate.getDate();
+    if (month < 10) {
+        month  = '0' + month;
     }
-];
+    if (date < 10) {
+        date = '0' + date;
+    }
+    return  `${month}/${date}/${commentDate.getFullYear()}`;
+}
 
 const shows = document.querySelector(".shows");
 
@@ -76,7 +58,7 @@ showsRows.append(
 
 shows.append(showsRows);
 
-showData.forEach(shoObj => {
+bandsiteObj.getShows().forEach(shoObj => {
     displayShow(shoObj);
 });
 
@@ -91,7 +73,7 @@ function displayShow(shoObj) {
 
     const showsDate = document.createElement("p");
     showsDate.classList.add("shows__date");
-    showsDate.textContent = shoObj.date;
+    showsDate.textContent = timestampToDate(shoObj.date);
 
     const mobileHeadingVenue = document.createElement("h3");
     mobileHeadingVenue.classList.add("shows__mobile-headings");
@@ -99,7 +81,7 @@ function displayShow(shoObj) {
 
     const showsVenue = document.createElement("p");
     showsVenue.classList.add("shows__venue");
-    showsVenue.textContent = shoObj.venue;
+    showsVenue.textContent = shoObj.place;
 
     const mobileHeadingLocation = document.createElement("h3");
     mobileHeadingLocation.classList.add("shows__mobile-headings");

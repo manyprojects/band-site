@@ -1,5 +1,3 @@
-export const newVar = "testing new var!";
-
 const apiKey = "cc4d248a-e458-4ca9-b4e2-24966fe4b74a";
 
 class BandSiteAPI {
@@ -31,17 +29,25 @@ class BandSiteAPI {
         xhr.open('GET', `${this.baseURL}comments?api_key=${this.apiKey}`, false);
         xhr.send(null);
         if (xhr.status === 200) {
+            // sort by highest timestamps
+           return JSON.parse(xhr.response)
+           .sort((a, b) => b.timestamp - a.timestamp);
+        } else {
+           throw new Error('Request failed: ' + xhr.statusText);
+        }
+    }
+
+    getShows() {
+        const xhr = new XMLHttpRequest();
+        xhr.open('GET', `${this.baseURL}showdates?api_key=${this.apiKey}`, false);
+        xhr.send(null);
+        if (xhr.status === 200) {
            return JSON.parse(xhr.response);
         } else {
            throw new Error('Request failed: ' + xhr.statusText);
         }
-     }
-
-    getShows() {
-
     }
 
 }
-// const bandsiteObj = new BandSiteAPI (baseURL, apiKey);
-// bandsiteObj.getComment();
+
 export const bandsiteObj = new BandSiteAPI(apiKey);
